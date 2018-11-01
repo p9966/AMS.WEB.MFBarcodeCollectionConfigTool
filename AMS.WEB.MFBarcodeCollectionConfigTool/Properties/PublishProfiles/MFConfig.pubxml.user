@@ -10,22 +10,34 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/AMS.WEB.MFBarcodeCollectionConfigTool.dll">
-      <publishTime>10/31/2018 17:41:04</publishTime>
+      <publishTime>11/01/2018 23:30:38</publishTime>
+    </File>
+    <File Include="img/bug.png">
+      <publishTime>11/01/2018 15:37:02</publishTime>
+    </File>
+    <File Include="img/build.png">
+      <publishTime>11/01/2018 14:12:10</publishTime>
     </File>
     <File Include="img/FullPower.bmp">
       <publishTime>10/30/2018 09:15:47</publishTime>
+    </File>
+    <File Include="img/ReportBugClose.png">
+      <publishTime>11/01/2018 22:27:34</publishTime>
+    </File>
+    <File Include="img/stop.png">
+      <publishTime>11/01/2018 15:39:27</publishTime>
     </File>
     <File Include="img/wifi_cnn.bmp">
       <publishTime>10/30/2018 09:24:08</publishTime>
     </File>
     <File Include="Index.css">
-      <publishTime>10/31/2018 17:34:56</publishTime>
+      <publishTime>11/01/2018 22:29:25</publishTime>
     </File>
     <File Include="Index.html">
-      <publishTime>10/31/2018 17:35:15</publishTime>
+      <publishTime>11/01/2018 23:18:03</publishTime>
     </File>
     <File Include="Index.js">
-      <publishTime>10/31/2018 17:35:06</publishTime>
+      <publishTime>11/01/2018 23:18:18</publishTime>
     </File>
     <File Include="jquery-1.8.2.js">
       <publishTime>10/29/2018 20:27:12</publishTime>
@@ -33,8 +45,20 @@
     <File Include="MsgBox.html">
       <publishTime>10/31/2018 14:12:20</publishTime>
     </File>
+    <File Include="ReportBug.ashx">
+      <publishTime>11/01/2018 22:44:40</publishTime>
+    </File>
     <File Include="ToolComponents/barcode.html">
-      <publishTime>10/31/2018 14:27:58</publishTime>
+      <publishTime>11/01/2018 11:08:06</publishTime>
+    </File>
+    <File Include="ToolComponents/ConditionCount.html">
+      <publishTime>11/01/2018 10:56:07</publishTime>
+    </File>
+    <File Include="ToolComponents/ConditionSingleCount.html">
+      <publishTime>11/01/2018 11:00:47</publishTime>
+    </File>
+    <File Include="ToolComponents/FixedCount.html">
+      <publishTime>11/01/2018 10:46:06</publishTime>
     </File>
     <File Include="ToolComponents/Num.html">
       <publishTime>10/31/2018 15:29:01</publishTime>
@@ -42,8 +66,17 @@
     <File Include="ToolComponents/Query.html">
       <publishTime>10/31/2018 16:35:42</publishTime>
     </File>
+    <File Include="ToolComponents/SerialNum.html">
+      <publishTime>11/01/2018 10:40:24</publishTime>
+    </File>
+    <File Include="ToolComponents/SingleTotalCount.html">
+      <publishTime>11/01/2018 21:26:22</publishTime>
+    </File>
     <File Include="ToolComponents/Time.html">
       <publishTime>10/31/2018 15:58:45</publishTime>
+    </File>
+    <File Include="ToolComponents/TotalCount.html">
+      <publishTime>11/01/2018 10:49:25</publishTime>
     </File>
     <File Include="Web.config">
       <publishTime>10/30/2018 11:00:05</publishTime>

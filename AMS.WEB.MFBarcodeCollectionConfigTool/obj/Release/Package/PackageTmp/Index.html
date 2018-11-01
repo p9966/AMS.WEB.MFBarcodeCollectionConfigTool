@@ -7,13 +7,29 @@
     <script src="Index.js"></script>
     <title>ConfigTools - Aimasen</title>
 </head>
-<body>
+<body onselectstart="return false;">
     <table id="tbMain">
         <tr>
-            <td colspan="3" id="tdCaption">Hello, i'm simple welcome to Aimasen Studio. </td>
+            <td colspan="3" id="tdCaption">Hello, i'm simple welcome to Aimasen Studio.
+                <!--本源码已开源，开源地址:https://github.com/p9966/AMS.WEB.MFBarcodeCollectionConfigTool-->
+            </td>
         </tr>
         <tr>
-            <td colspan="3" id="tdTools">文件  编辑  菜单</td>
+            <td colspan="3" id="tdTools">
+                <table>
+                    <tr>
+                        <td id="tdBuild">
+                            <img src="img/build.png" title="编译" /></td>
+                        <td id="tdReportBug">
+                            <img src="img/bug.png" title="报个bug" />
+                        </td>
+                        <td>
+                            <img src="img/stop.png" />
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
         </tr>
         <tr>
             <td id="tdControls" onclick="ControlsClick()">
@@ -28,12 +44,16 @@
                                 <li val="point" des="设置为指针(默认)">指针</li>
                                 <li val="caption">标题</li>
                                 <li val="barcode" des="在MF机器上面生成一个条码控件，该控件在一个界面上只能是唯一的">条码</li>
-                                <li val="num" des="在MF机器上面生成一个记录数量的控件，该控件在一个界面上只能是唯一的">数量</li>
-                                <li val="time">时间</li>
-                                <li val="query">查询选择</li>
-                                <li val="SN">序列号</li>
-                                <li val="storage">仓库</li>
-                                <li val="custommer">客户</li>
+                                <li val="num" des="在MF机器上面生成一个记录数量的控件，该控件在一个界面上只能是唯一的">当前数量</li>
+                                <li val="time" des="在MF机器上面生成一个时间控件，该控件可以在界面上多次出现">时间</li>
+                                <li val="query" des="在MF机器上面生成一个查询本地指定文件内容的控件，该控件可以在界面上多次出现">查询选择</li>
+                                <li val="SN" des="在MF机器上面生成一个保存当前扫描记录序列号的控件，该控件在一个界面上只能是唯一的">序列号</li>
+                                <li val="fixedCount" des="在MF机器上面生成一个保存的固定值，该控件可以在界面上多次出现">固定值</li>
+                                <li val="totalCount" des="在MF机器上面生成一个只显示不保存的总数量的控件，该控件在一个界面上只能是唯一的">总数量</li>
+                                <li val="singleTotalCount" des="在MF机器上面生成一个只显示不保存的单品总数量，该控件在一个界面上只能是唯一的">单品总数量</li>
+                                <li val="conditionCount" des="在MF机器上面生成一个只显示不保存条件总数量的控件，该控件在一个界面上只能是唯一的">条件总数量</li>
+                                <li val="conditionSingleCount" des="在MF机器上面生成一个只显示不保存条件单品数量的控件，该控件在一个界面上只能是唯一的">条件单品数量</li>
+
                             </ol>
                         </td>
                     </tr>
@@ -120,6 +140,42 @@
                                         </select>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td colspan="2" class="tdPropertyGroup">保存</td>
+                                </tr>
+
+                                <tr id="trFixedContent">
+                                    <td class="tdPropertiesName">固定值内容</td>
+                                    <td>
+                                        <input type="text" class="tdPropertiesValue" id="txtFixedContent" /></td>
+                                </tr>
+                                <tr id="trFileName">
+                                    <td class="tdPropertiesName">查询文件名</td>
+                                    <td>
+                                        <input type="text" class="tdPropertiesValue" id="txtFileName" /></td>
+                                </tr>
+                                <tr id="trIsSave">
+                                    <td class="tdPropertiesName">是否保存</td>
+                                    <td>
+                                        <select class="tdPropertiesValue" id="selIsSave">
+                                            <option value="save">保存</option>
+                                            <option value="Notsave">不保存</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr id="trSaveCount">
+                                    <td class="tdPropertiesName">保存长度</td>
+                                    <td>
+                                        <input type="text" class="tdPropertiesValue" id="txtSaveCount" /></td>
+                                </tr>
+                                <tr id="trSplitCount">
+                                    <td class="tdPropertiesName">分隔符位数</td>
+                                    <td>
+                                        <input type="text" class="tdPropertiesValue" id="txtSplitCount" /></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="tdPropertyGroup">其他</td>
+                                </tr>
                                 <tr id="trProperty">
                                     <td class="tdPropertiesName">参数</td>
                                     <td>
@@ -129,38 +185,24 @@
                                             <option value="Time">时间</option>
                                             <option value="SN">序列号</option>
                                             <option value="Query">查询选择</option>
-                                            <option value="Fixed">固定值</option>
-                                            <option value="Total">总数量</option>
-                                            <option value="Linetotal">条件总数量</option>
+                                            <option value="FixedCount">固定值</option>
+                                            <option value="TotalCount">总数量</option>
+                                            <option value="SingleTotalCount">单品数量</option>
+                                            <option value="ConditionCount">条件总数量</option>
+                                            <option value="ConditionSingleCount">条件单品数量</option>
                                         </select>
                                     </td>
                                 </tr>
-                                <tr id="trFileName">
-                                    <td class="tdPropertiesName">查询文件名</td>
-                                    <td>
-                                        <input type="text" class="tdPropertiesValue" id="txtFileName" /></td>
-                                </tr>
-                                <tr id="trSaveCount">
-                                    <td class="tdPropertiesName">保存长度</td>
-                                    <td>
-                                        <input type="text" class="tdPropertiesValue" id="txtSaveCount" /></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="tdPropertyGroup">其他</td>
-                                </tr>
-                                <tr id="trSplitCount">
-                                    <td class="tdPropertiesName">分隔符位数</td>
-                                    <td>
-                                        <input type="text" class="tdPropertiesValue" id="txtSplitCount" /></td>
-                                </tr>
+
                                 <tr id="trHotKey">
                                     <td class="tdPropertiesName">热键</td>
                                     <td>
                                         <select class="tdPropertiesValue" id="selHotKey">
-                                            <option value="volvo">F1</option>
-                                            <option value="saab">F2</option>
-                                            <option value="opel">F3</option>
-                                            <option value="audi">F4</option>
+                                            <option value="F1">F1</option>
+                                            <option value="F2">F2</option>
+                                            <option value="F3">F3</option>
+                                            <option value="F4">F4</option>
+                                            <option value="None">不选择</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -188,8 +230,79 @@
         <ol id="olMFContextMenu">
             <li value="selected">选择</li>
             <li value="viewProp">查看属性</li>
-            <li value="del">删除标签</li>
+            <li value="del" id="liDel">删除标签</li>
         </ol>
+    </div>
+
+    <!-- 报个bug面板 -->
+    <div id="divReportBug" hidden="hidden">
+        <table id="tbReportBug">
+            <tr>
+                <td id="tdReportBugTitle" colspan="2">写给Simple的一封信</td>
+                <td id="tdReportBugClose">
+                    <img src="img/ReportBugClose.png" title="关闭" />
+                </td>
+            </tr>
+            <tr>
+                <td class="clsReportBugBigTitle">如果
+                </td>
+                <td colspan="2" class="clsReportBugTips">
+                    <ol>
+                        <li>您在使用过程中出现了任何意想不到的问题</li>
+                        <li>您不了解其中某个功能的作用</li>
+                        <li>您需要发表一下您的个人建议或意见</li>
+                    </ol>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="clsReportBugBigTitle">那么</td>
+                <td colspan="2" class="clsReportBugTips">
+                    <ol>
+                        <li>您可以给Simple写一封电子邮件,将您的意见或建议发送到他的邮箱,他一定会及时处理并反馈给您的。他的邮箱地址是:1430732833@qq.com</li>
+                        <li>当然您也可以在下方直接写下您的反馈意见</li>
+                    </ol>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2" class="clsReportBugInputCaption">你的名字:
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    <input type="text" class="clsReportTxt" id="txtUserName"/>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2" class="clsReportBugInputCaption">你的邮箱:
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    <input type="text" class="clsReportTxt" id="txtEmail"/>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2" class="clsReportBugInputCaption">你的建议:
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    <textarea id="txtReportBugRecommend" id="txtRecommend"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" id="tdReportBugSubmit">
+                    <input type="button" value="提交" id="btnReportBugSubmit" />
+                </td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

@@ -2,6 +2,8 @@
     margin: 0;
     background-color: rgb(45,45,48);
     cursor: default;
+    -moz-user-select: none;
+    user-select: none;
 }
 
 #tbMain {
@@ -302,3 +304,115 @@
     #olMFContextMenu :hover {
         background-color: rgb(51,51,52);
     }
+
+#divReportBug {
+    background-color: rgb(40,40,40);
+    border: 1px solid rgb(60,60,60);
+    width: 500px;
+    font-size: 12px;
+    color: white;
+    position: absolute;
+}
+
+#tbReportBug {
+    border-collapse: collapse;
+    width: 100%;
+    height: 100%;
+}
+
+    #tbReportBug ol {
+        list-style: disc;
+        padding-left: 10px;
+        margin: 0;
+    }
+
+    #tbReportBug tr td {
+        /*border: 1px solid red;*/
+    }
+
+#tdReportBugTitle {
+    height: 30px;
+    vertical-align: central;
+    padding-bottom: 10px;
+    font-family: YouYuan;
+    color: rgb(200,200,200);
+    font-size: 13px;
+}
+
+#tdReportBugClose {
+    width: 16px;
+    padding-right: 10px;
+    vertical-align: central;
+}
+
+.clsReportBugBigTitle {
+    font-family: YouYuan;
+    width: 80px;
+    font-size: 25px;
+    text-align: right;
+    vertical-align: top;
+    color: rgb(200,200,200);
+    padding-right: 10px;
+}
+
+.clsReportBugTips {
+    font-size: 13px;
+    font-family: YouYuan;
+    vertical-align: top;
+    padding-bottom: 10px;
+    padding-right: 60px;
+    color: rgb(200,200,200);
+}
+
+.clsReportBugInputCaption {
+    font-size: 13px;
+    font-family: YouYuan;
+    color: rgb(200,200,200);
+    padding-top: 5px;
+}
+
+.clsReportTxt {
+    width: 300px;
+    background-color: rgb(35,35,35);
+    border-radius: 6px;
+    border: 1px solid rgb(50,50,50);
+    color: white;
+    height: 20px;
+}
+
+#txtReportBugRecommend {
+    width: 300px;
+    height: 80px;
+    background-color: rgb(35,35,35);
+    border-radius: 6px;
+    border: 1px solid rgb(50,50,50);
+    color: white;
+}
+
+#btnReportBugSubmit {
+    margin-top: 20px;
+    margin-right: 105px;
+    width: 80px;
+    height: 25px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid rgb(120,120,120);
+    background-color: rgb(120,120,120);
+    color: rgb(40,40,40);
+}
+
+#tdReportBugSubmit {
+    text-align: right;
+}
+
+#tbTools {
+    border-collapse: collapse;
+}
+
+    #tbTools tr td {
+        padding-right: 8px;
+    }
+
+        #tbTools tr td :hover {
+            border: 1px solid rgb(100,100,100);
+        }
