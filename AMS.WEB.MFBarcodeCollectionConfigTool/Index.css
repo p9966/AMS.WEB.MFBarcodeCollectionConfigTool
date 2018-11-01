@@ -1,0 +1,304 @@
+﻿body {
+    margin: 0;
+    background-color: rgb(45,45,48);
+    cursor: default;
+}
+
+#tbMain {
+    border-collapse: collapse;
+    width: 100%;
+    height: 100%;
+}
+
+    #tbMain td {
+        margin: 0;
+        padding: 0;
+    }
+
+#tdCaption {
+    height: 32px;
+    color: rgb(153,153,153);
+    font-size: 13px;
+}
+
+#tdTools {
+    height: 32px;
+    color: rgb(241,241,241);
+    font-size: 13px;
+}
+
+#tbMFScreenTitle {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    #tbMFScreenTitle td {
+        height: 20px;
+    }
+
+#tdTitleCaption {
+    width: 160px;
+}
+
+#tdTitleSignal {
+    vertical-align: bottom;
+    width: 40px;
+    text-align: center;
+}
+
+#tdControls {
+    height: 100%;
+    padding-left: 10px;
+    width: 15%;
+    vertical-align: top;
+}
+
+#tdControlMenus {
+    vertical-align: top;
+}
+
+#tdTitleMenuName {
+    width: 280px;
+    text-align: center;
+    font-size: 14px;
+}
+
+#tdControls ol {
+    padding: 0;
+    color: rgb(241,241,241);
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 1px;
+    list-style-type: none;
+    display: inline;
+    text-indent: 15px;
+}
+
+#tbControls {
+    border-collapse: collapse;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#tdPropertiesSummary {
+    font-family: 'Courier New';
+    letter-spacing: 1px;
+    font-size: 12px;
+    position: relative;
+    bottom: 10px;
+    background-color: rgb(60,60,60);
+    color: rgb(200,200,200);
+    vertical-align: top;
+    text-align: left;
+    height: 70px;
+    bottom: 0px;
+}
+
+#tdProperties {
+    vertical-align: top;
+}
+
+    #tdProperties table td {
+        white-space: nowrap;
+    }
+
+#tbProperty {
+    border-collapse: collapse;
+    height: 100%;
+    width: 100%;
+}
+
+#tdControlSummary {
+    font-family: 'Courier New';
+    letter-spacing: 1px;
+    font-size: 12px;
+    position: relative;
+    bottom: 10px;
+    background-color: rgb(60,60,60);
+    color: rgb(200,200,200);
+    vertical-align: top;
+    text-align: left;
+    height: 70px;
+    bottom: 0px;
+}
+
+#tdOperate {
+    vertical-align: top;
+    width: 65%;
+    background-color: rgb(30,30,30);
+    overflow: hidden;
+}
+
+#tdCharge {
+    vertical-align: bottom;
+    width: 40px;
+    text-align: center;
+}
+
+#tdTitleTime {
+    width: 40px;
+    text-align: center;
+}
+
+
+#divMFUI {
+    position: relative;
+    left: 50px;
+    top: 20px;
+    width: 280px;
+    /*background-color: rgb(162,188,216);*/
+    background-color: rgb(90,90,90);
+}
+
+#divScreen {
+    overflow: hidden;
+    height: 250px;
+    margin-top: 5px;
+}
+
+#divScreenMenu {
+    height: 30px;
+    font-size: 14px;
+}
+
+    #divScreenMenu table {
+        font-size: 14px;
+        border-collapse: collapse;
+        width: 100%;
+        height: 100%;
+    }
+
+#tdScreenOK {
+    width: 140px;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+#tdScreenCancel {
+    text-align: right;
+    vertical-align: bottom;
+}
+
+#tbMFUI {
+    border-collapse: collapse;
+}
+
+#tdMFScreen {
+    width: 280px;
+    height: 320px;
+    background-color: rgb(240,240,240);
+    vertical-align: top;
+}
+
+#divScreenTitle {
+    width: 100%;
+    height: 40px;
+    background-color: rgb(64,64,64);
+    font-size: 13px;
+    color: white;
+}
+
+#tdKeyborder {
+    width: 100%;
+    height: 40px;
+}
+
+#tdProperty {
+    width: 20%;
+    vertical-align: top;
+}
+
+    #tdProperty table {
+        width: 100%;
+        padding-left: 20px;
+        font-size: 13px;
+        color: rgb(241,241,241);
+        letter-spacing: 1px;
+        border-collapse: collapse;
+    }
+
+.tdPropertyGroup {
+    height: 23px;
+    font-size: 12px;
+    color: rgb(241,241,241);
+    letter-spacing: 1px;
+    background-color: rgb(45,45,48);
+}
+
+.tdPropertiesName {
+    text-indent: 20px;
+    height: 23px;
+    width: 30%;
+    font-size: 13px;
+    color: rgb(241,241,241);
+    letter-spacing: 1px;
+    background-color: rgb(37,37,38);
+    border-right: 1px solid rgb(45,45,48);
+    border-bottom: 1px solid rgb(45,45,48);
+}
+
+.tdPropertiesValue {
+    width: 99%;
+    height: 23px;
+    font-size: 13px;
+    color: rgb(241,241,241);
+    letter-spacing: 1px;
+    background-color: rgb(37,37,38);
+    border: 0px;
+    border-bottom: 1px solid rgb(45,45,48);
+}
+
+#tdBottom {
+    height: 20px;
+}
+
+.clsToolsBarFocus {
+    height: 20px;
+    color: rgb(208,208,208);
+    font-size: 13px;
+    background-color: rgb(0,122,204);
+}
+
+.clsCommonTool {
+    height: 20px;
+    color: rgb(240,240,240);
+    font-size: 13px;
+    background-color: rgb(63,63,70);
+}
+
+#tdBottom {
+    text-indent: 5px;
+    background-color: rgb(0,122,204);
+    font-size: 12px;
+    color: rgb(240,240,240);
+}
+
+#divMFContextMenu {
+    background-color: rgb(40,40,40);
+    border: 1px solid rgb(60,60,60);
+    width: 150px;
+    height: 80px;
+    font-size: 12px;
+    color: white;
+    position: absolute;
+}
+
+#olMFContextMenu {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: inline;
+}
+
+    #olMFContextMenu li {
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid rgb(60,60,60);
+    }
+
+    #olMFContextMenu :hover {
+        background-color: rgb(51,51,52);
+    }
