@@ -161,7 +161,7 @@ $(function () {
         $.ajax({
             url: "ReportBug.ashx",
             method: "get",
-            data: { 'userName': $('#txtUserName').val(), 'email': $('#txtEmail').val(), 'recommend': $('#txtRecommend').val() },
+            data: { 'userName': $('#txtUserName').val(), 'email': $('#txtEmail').val(), 'recommend': $('#txtRecommend').text() },
             success: function (data) {
                 if (data == 'ok') {
                     alert('反馈成功,Simple正在加紧处理!');
