@@ -160,8 +160,8 @@ $(function () {
     $('#btnReportBugSubmit').click(function () {
         $.ajax({
             url: "ReportBug.ashx",
-            method: "get",
-            data: { 'userName': $('#txtUserName').val(), 'email': $('#txtEmail').val(), 'recommend': $('#txtRecommend').text() },
+            method: "post",
+            data: { 'userName': $('#txtUserName').val(), 'email': $('#txtEmail').val(), 'recommend': $('#txtReportBugRecommend').val() },
             success: function (data) {
                 if (data == 'ok') {
                     alert('反馈成功,Simple正在加紧处理!');
