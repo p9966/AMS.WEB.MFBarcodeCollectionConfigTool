@@ -3,6 +3,8 @@
 /// <reference path="jquery-1.8.2.js" />
 $(function () {
 
+    window.oncontextmenu = function () { return false; };
+
     // 设置tbMain的高度为铺满整个屏幕
     $('#tbMain').height(window.innerHeight);
 

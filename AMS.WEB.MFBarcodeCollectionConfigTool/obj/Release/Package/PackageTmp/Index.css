@@ -404,3 +404,15 @@
 #tdReportBugSubmit {
     text-align: right;
 }
+
+#tbTools {
+    border-collapse: collapse;
+}
+
+    #tbTools tr td {
+        padding-right: 8px;
+    }
+
+        #tbTools tr td :hover {
+            border: 1px solid rgb(100,100,100);
+        }

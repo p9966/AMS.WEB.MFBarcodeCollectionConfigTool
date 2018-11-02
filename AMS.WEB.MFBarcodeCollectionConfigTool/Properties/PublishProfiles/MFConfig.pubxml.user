@@ -6,11 +6,11 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\14307\Desktop\MFConfigTools</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\dotNet\Demo\AMS.WEB.MFBarcodeCollectionConfigTool\MFConfigTools</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/AMS.WEB.MFBarcodeCollectionConfigTool.dll">
-      <publishTime>11/01/2018 23:30:38</publishTime>
+      <publishTime>11/02/2018 00:05:20</publishTime>
     </File>
     <File Include="img/bug.png">
       <publishTime>11/01/2018 15:37:02</publishTime>
@@ -25,19 +25,19 @@
       <publishTime>11/01/2018 22:27:34</publishTime>
     </File>
     <File Include="img/stop.png">
-      <publishTime>11/01/2018 15:39:27</publishTime>
+      <publishTime>11/01/2018 23:45:36</publishTime>
     </File>
     <File Include="img/wifi_cnn.bmp">
       <publishTime>10/30/2018 09:24:08</publishTime>
     </File>
     <File Include="Index.css">
-      <publishTime>11/01/2018 22:29:25</publishTime>
+      <publishTime>11/01/2018 23:54:30</publishTime>
     </File>
     <File Include="Index.html">
-      <publishTime>11/01/2018 23:18:03</publishTime>
+      <publishTime>11/01/2018 23:46:52</publishTime>
     </File>
     <File Include="Index.js">
-      <publishTime>11/01/2018 23:18:18</publishTime>
+      <publishTime>11/01/2018 23:52:55</publishTime>
     </File>
     <File Include="jquery-1.8.2.js">
       <publishTime>10/29/2018 20:27:12</publishTime>

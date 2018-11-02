@@ -31,6 +31,7 @@ namespace AMS.WEB.MFBarcodeCollectionConfigTool
 
                 SmtpClient l_smtpClient = new SmtpClient();
                 l_smtpClient.Host = "smtp.qq.com";
+                l_smtpClient.Port = 587;
                 l_smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
                 l_smtpClient.UseDefaultCredentials = false;
                 l_smtpClient.Credentials = new NetworkCredential("1430732833@qq.com", "lmcgmusyozighecc");
@@ -38,7 +39,8 @@ namespace AMS.WEB.MFBarcodeCollectionConfigTool
                 l_smtpClient.Send(l_mailMsg);
                 context.Response.Write("ok");
             }
-            catch {
+            catch
+            {
                 context.Response.Write("no");
             }
         }
