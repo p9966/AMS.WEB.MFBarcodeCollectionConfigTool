@@ -30,6 +30,7 @@ namespace AMS.WEB.MFBarcodeCollectionConfigTool
                 l_mailMsg.IsBodyHtml = true;
 
                 SmtpClient l_smtpClient = new SmtpClient();
+                l_smtpClient.EnableSsl = true;
                 l_smtpClient.Host = "smtp.qq.com";
                 l_smtpClient.Port = 587;
                 l_smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
