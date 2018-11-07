@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\addTitle.png" />
     <Content Include="img\bug.png" />
     <Content Include="img\build.png" />
     <Content Include="img\FullPower.bmp" />
@@ -81,12 +82,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DownLoad.ashx.cs">
+      <DependentUpon>DownLoad.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportBug.ashx.cs">
       <DependentUpon>ReportBug.ashx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DownLoad.ashx" />
     <None Include="Properties\PublishProfiles\MFConfig.pubxml" />
     <Content Include="ReportBug.ashx" />
     <None Include="Web.Debug.config">

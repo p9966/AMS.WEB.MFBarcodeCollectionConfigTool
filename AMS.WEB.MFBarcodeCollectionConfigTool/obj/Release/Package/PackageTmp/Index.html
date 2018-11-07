@@ -10,7 +10,7 @@
 <body onselectstart="return false;">
     <table id="tbMain">
         <tr>
-            <td colspan="3" id="tdCaption">Hello, i'm simple welcome to Aimasen Studio.
+            <td colspan="3" hidden="hidden" id="tdCaption">version:1.0.2.0 description:在测试过程中,如有任何意见或建议请点左上角"报个bug"图标反馈.更好的使用体验请按F11
                 <!--本源码已开源，开源地址:https://github.com/p9966/AMS.WEB.MFBarcodeCollectionConfigTool-->
             </td>
         </tr>
@@ -19,9 +19,12 @@
                 <table id="tbTools">
                     <tr>
                         <td id="tdBuild">
-                            <img src="img/build.png" title="编译" /></td>
+                            <img src="img/build.png" title="编译" id="imgBuild" /></td>
                         <td id="tbStopBuild">
                             <img src="img/stop.png" />
+                        </td>
+                        <td id="tdSetTitle">
+                            <img src="img/addTitle.png" title="设置抬头" />
                         </td>
                         <td id="tdReportBug">
                             <img src="img/bug.png" title="报个bug" />
@@ -46,7 +49,7 @@
                                 <li val="barcode" des="在MF机器上面生成一个条码控件，该控件在一个界面上只能是唯一的">条码</li>
                                 <li val="num" des="在MF机器上面生成一个记录数量的控件，该控件在一个界面上只能是唯一的">当前数量</li>
                                 <li val="time" des="在MF机器上面生成一个时间控件，该控件可以在界面上多次出现">时间</li>
-                                <li val="query" des="在MF机器上面生成一个查询本地指定文件内容的控件，该控件可以在界面上多次出现">查询选择</li>
+                                <li val="query" des="在MF机器上面生成一个查询本地指定文件内容的控件，该控件可以在界面上多次出现">查询选择/输入</li>
                                 <li val="SN" des="在MF机器上面生成一个保存当前扫描记录序列号的控件，该控件在一个界面上只能是唯一的">序列号</li>
                                 <li val="fixedCount" des="在MF机器上面生成一个保存的固定值，该控件可以在界面上多次出现">固定值</li>
                                 <li val="totalCount" des="在MF机器上面生成一个只显示不保存的总数量的控件，该控件在一个界面上只能是唯一的">总数量</li>
@@ -65,7 +68,7 @@
 
             <td id="tdOperate" onclick="OperateClick()">
                 <div class="clsToolsBarFocus" id="divOperateTitleBar">MF界面 [设计]</div>
-                <div id="divMFUI">
+                <div id="divMFUI" hidden="hidden">
                     <table id="tbMFUI">
                         <tr>
                             <td id="tdMFScreen">
@@ -135,19 +138,13 @@
                                     <td class="tdPropertiesName">是否显示</td>
                                     <td>
                                         <select class="tdPropertiesValue" id="selDisplay">
-                                            <option value="visible">显示</option>
-                                            <option value="hidden">不显示</option>
+                                            <option value="true">显示</option>
+                                            <option value="false">不显示</option>
                                         </select>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="tdPropertyGroup">保存</td>
-                                </tr>
-
-                                <tr id="trFixedContent">
-                                    <td class="tdPropertiesName">固定值内容</td>
-                                    <td>
-                                        <input type="text" class="tdPropertiesValue" id="txtFixedContent" /></td>
                                 </tr>
                                 <tr id="trFileName">
                                     <td class="tdPropertiesName">查询文件名</td>
@@ -222,7 +219,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan="3" id="tdBottom">就绪 - AimasenStudio</td>
+            <td colspan="3" id="tdBottom">就绪 - AimasenStudio   version:1.0.2.1 description:在测试过程中,如有任何意见或建议请点左上角"报个bug"图标反馈.更好的使用体验请按F11</td>
         </tr>
     </table>
     <!--MF屏幕右键菜单-->
@@ -259,7 +256,7 @@
                 <td class="clsReportBugBigTitle">那么</td>
                 <td colspan="2" class="clsReportBugTips">
                     <ol>
-                        <li>您可以给Simple写一封电子邮件,将您的意见或建议发送到他的邮箱,他一定会及时处理并反馈给您的。他的邮箱地址是:1430732833@qq.com</li>
+                        <li>您可以给Simple写一封电子邮件,将您的意见或建议发送到他的邮箱,他一定会及时处理并反馈给您的。他的邮箱地址是:single9966@163.com</li>
                         <li>当然您也可以在下方直接写下您的反馈意见</li>
                     </ol>
                 </td>
@@ -294,13 +291,88 @@
             <tr>
                 <td></td>
                 <td colspan="2">
-                    <textarea id="txtReportBugRecommend" id="txtRecommend"></textarea>
+                    <textarea id="txtReportBugRecommend"></textarea>
                 </td>
             </tr>
             <tr>
                 <td colspan="3" id="tdReportBugSubmit">
-                    <input type="button" value="提交" id="btnReportBugSubmit" />
+                    <input type="button" value="发送" id="btnReportBugSubmit" />
                 </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="divBuildProcess" hidden="hidden">
+        <table>
+            <tr>
+                <td id="tdBuildTitle">正在打包...</td>
+
+            </tr>
+            <tr>
+                <td id="tdBuildBar">
+                    <div id="divBuildBar"></div>
+                </td>
+            </tr>
+            <tr>
+                <td id="tdBuildDes"></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 设置抬头 -->
+    <div id="divSaveTitle" hidden="hidden">
+        <table id="tbSaveTitle">
+            <tr>
+                <td colspan="3" id="tdSaveTitleCaption">设置抬头</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="tdSaveTitleDes" class="saveTitleTips">设置的抬头是用于在保存文件里面自动生成一个抬头文件。
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="clsSaveTitleBlank"></td>
+                <td id="tdSaveTitleShow" class="saveTitleTips">类似于:
+                </td>
+                <td class="clsSaveTitleBlank"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="tdSaveTitleXXX">xxx科技有限公司
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="td2" class="saveTitleTips">0102364126，   10，   FixedValue,   1996/12/11 09:33:33
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="td3" class="saveTitleTips">1354532154，   11，   FixedValue,   1996/12/11 09:33:33
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="tdSaveTitleName">抬头名称：
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="tdTitleInputName">
+                    <input type="text" id="txtTitleName" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+        <table id="tbSaveTitleButton">
+            <tr>
+                <td id="tdSaveTitleOK">确认</td>
+                <td id="tdSaveTitleCancel">取消</td>
             </tr>
         </table>
     </div>

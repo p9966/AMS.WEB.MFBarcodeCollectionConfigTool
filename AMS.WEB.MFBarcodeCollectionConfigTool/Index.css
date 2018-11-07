@@ -378,6 +378,8 @@
     border: 1px solid rgb(50,50,50);
     color: white;
     height: 20px;
+    font-size: 13px;
+    color: rgb(240,240,240);
 }
 
 #txtReportBugRecommend {
@@ -387,6 +389,9 @@
     border-radius: 6px;
     border: 1px solid rgb(50,50,50);
     color: white;
+    font-size: 13px;
+    font-family: 'Courier New';
+    color: rgb(240,240,240);
 }
 
 #btnReportBugSubmit {
@@ -416,3 +421,124 @@
         #tbTools tr td :hover {
             border: 1px solid rgb(100,100,100);
         }
+
+#divBuildProcess {
+    background-color: rgb(40,40,40);
+    border: 1px solid rgb(60,60,60);
+    width: 500px;
+    width: 520px;
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    font-size: 13px;
+    font-family: YouYuan;
+    color: rgb(240,240,240);
+    overflow: hidden;
+}
+
+    #divBuildProcess table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+#divBuildBar {
+    width: 0px;
+    background-color: rgb(141,210,138);
+    height: 20px;
+}
+
+#tdBuildTitle {
+    padding-bottom: 30px;
+}
+
+#tdBuildBar {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#tdBuildDes {
+    padding-left: 10px;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+#divSaveTitle {
+    position: absolute;
+    background-color: rgb(40,40,40);
+    border: 1px solid rgb(60,60,60);
+    color: rgb(240,240,240);
+    font-size: 13px;
+    width: 400px;
+}
+
+#tbSaveTitle {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.saveTitleTips {
+    color: rgb(180,180,180);
+}
+
+.clsSaveTitleBlank {
+    width: 20px;
+}
+
+#tdSaveTitleCaption {
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-bottom: 20px;
+}
+
+#tdSaveTitleXXX {
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+#tdSaveTitleName {
+    color: rgb(230,230,230);
+    padding-top: 10px;
+}
+
+#tdTitleInputName {
+    padding-bottom: 20px;
+}
+
+#txtTitleName {
+    font-size: 13px;
+    color: rgb(230,230,230);
+    background-color: rgb(34,35,35);
+    height: 20px;
+    border-radius: 5px;
+    width: 325px;
+    border: 1px solid rgb(60,60,60);
+}
+
+#tbSaveTitleButton {
+    border-collapse: collapse;
+    height: 36px;
+    width: 100%;
+    font-size: 13px;
+}
+
+#tdSaveTitleOK {
+    border-top: 1px solid rgb(60,60,60);
+    border-right: 1px solid rgb(60,60,60);
+    width: 50%;
+    text-align: center;
+}
+
+#tdSaveTitleCancel {
+    border-top: 1px solid rgb(60,60,60);
+    text-align: center;
+}
+
+    #tdSaveTitleCancel:hover {
+        background-color: rgb(100,100,100);
+    }
+
+#tdSaveTitleOK:hover {
+    background-color: rgb(0,122,204);
+    
+}

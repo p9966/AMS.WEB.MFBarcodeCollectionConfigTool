@@ -5,6 +5,11 @@ $(function () {
 
     window.oncontextmenu = function () { return false; };
 
+    // 设置其他窗口的默认居中位置
+    SetOtherDivLocation();
+
+    $('#divMFUI').fadeIn(2000);
+
     // 设置tbMain的高度为铺满整个屏幕
     $('#tbMain').height(window.innerHeight);
 
@@ -138,13 +143,119 @@ $(function () {
         var selectControl = $('#selAllControls').val();
         $('#selAllControls option[value = ' + selectControl + ']').remove();
         $('#' + selectControl).remove();
+
+        // 重置保存顺序
+        autoNo = 1;
+        var allControls = $('#divScreen div');
+        for (var i = 0; i < allControls.length; i++) {
+            $(allControls[i]).attr('savesn', autoNo);
+            autoNo++;
+        }
     });
 
-    // 报个bug
-    $('#divReportBug').offset({
-        left: window.innerWidth / 2 - $('#divReportBug').width() / 2,
-        top: window.innerHeight / 2 - $('#divReportBug').height() / 2
+    // 编译
+    var timerBuild;
+    $('#imgBuild').click(function (evt) {
+        var buildControls = $('#divScreen div');
+        // 检查热键是否冲突
+        for (var i = 0; i < buildControls.length; i++) {
+            var hotKeyVal = $(buildControls[i]).attr('hotkey');
+            if (hotKeyVal == 'None')
+                continue;
+            for (var j = i + 1; j < buildControls.length; j++) {
+                var hotKeyVal2 = $(buildControls[j]).attr('hotkey');
+                if (hotKeyVal2 == 'None')
+                    continue;
+                if (hotKeyVal == hotKeyVal2) {
+                    var msg = "控件[" + $(buildControls[i]).attr('id') + ']与控件[' + $(buildControls[j]).attr('id') + ']的热键存在冲突!';
+                    alert(msg);
+                    return;
+                }
+            }
+        }
+
+        // 开始打包
+        var buildResult = "";
+        if (saveHead.length > 0) {
+            buildResult = "head|" + saveHead;
+        }
+
+        if (buildControls.length <= 0) {
+            alert('MF设计界面暂无控件,请先设计!');
+            return;
+        }
+        $('#divBuildBar').width(0);
+        $('#divBuildProcess').fadeIn();
+        for (var i = 0; i < buildControls.length; i++) {
+            var controlCell = $(buildControls[i]);
+            var controlType = controlCell.attr('type');
+
+            if (controlType == 'barcode') {
+                if (buildResult.length > 0)
+                    buildResult += '\r\n';
+                buildResult += 'barcode|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|true|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
+            } else if (controlType == 'num') {
+                if (buildResult.length > 0)
+                    buildResult += '\r\n';
+                buildResult += 'num|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+            }
+            else if (controlType == 'time') {
+                if (buildResult.length > 0)
+                    buildResult += '\r\n';
+                buildResult += 'time|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+            }
+            else if (controlType == 'query') {
+                if (buildResult.length > 0)
+                    buildResult += '\r\n';
+                buildResult += 'query|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('filename') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
+            } else if (controlType == 'sn') {
+                if (buildResult.length > 0)
+                    buildResult += '\r\n';
+                buildResult += 'sn|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+            } else if (controlType == 'fixedCount') {
+                if (buildResult.length > 0)
+                    buildResult += '\r\n';
+                buildResult += 'fixedCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+            } else if (controlType == 'totalCount') {
+                if (buildResult.length > 0)
+                    buildResult += '\r\n';
+                buildResult += 'totalCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+            } else if (controlType == 'singleTotalCount') {
+                if (buildResult.length > 0)
+                    buildResult += '\r\n';
+                buildResult += 'singleTotalCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+            }
+            else if (controlType == 'conditionCount') {
+                if (buildResult.length > 0)
+                    buildResult += '\r\n';
+                buildResult += 'conditionCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+            }
+            else if (controlType == 'conditionSingleCount') {
+                if (buildResult.length > 0)
+                    buildResult += '\r\n';
+                buildResult += 'conditionSingleCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+            }
+        }
+
+
+        // 开启滚动条
+        var buildBar = $('#divBuildBar');
+        timerBuild = window.setInterval(function () {
+            buildBar.width(buildBar.width() + 1);
+            if (buildBar.width() >= $('#divBuildProcess').width() - 20) {
+                window.clearInterval(timerBuild);
+                funDownload(buildResult, "MF配置文件.txt");
+                $('#divBuildProcess').fadeOut();
+            }
+        }, 1);
     });
+
+    // 停止编译
+    $('#tbStopBuild').click(function () {
+        window.clearInterval(timerBuild);
+        $('#divBuildProcess').fadeOut();
+    });
+
     $('#tdReportBug').click(function () {
         var objControl = $('#divReportBug');
         objControl.fadeIn(500);
@@ -157,11 +268,41 @@ $(function () {
     });
 
     // 发送bug
+    var saveHead = "";
     $('#btnReportBugSubmit').click(function () {
+        // 判断是否重复发送
+        if ($(this).val() != '发送') {
+            return;
+        }
+
+        var userName = $('#txtUserName');
+        var email = $('#txtEmail');
+        var reportBug = $('#txtReportBugRecommend');
+
+        // 发送前检查
+        if (userName.val().length <= 0) {
+            alert('请输入您的名字!');
+            userName.focus();
+            return;
+        }
+
+        if (email.val().length <= 0 || $('#txtEmail').val().indexOf('@') == -1) {
+            alert('请输入正确的邮箱地址!');
+            email.focus();
+            return;
+        }
+
+        if (reportBug.val().length <= 0) {
+            alert('请输入您的建议或意见!');
+            reportBug.focus();
+            return;
+        }
+
+        $(this).val('正在发送...');
         $.ajax({
+            type: "POST",
             url: "ReportBug.ashx",
-            method: "post",
-            data: { 'userName': $('#txtUserName').val(), 'email': $('#txtEmail').val(), 'recommend': $('#txtReportBugRecommend').val() },
+            data: { 'userName': userName.val(), 'email': email.val(), 'recommend': reportBug.val() },
             success: function (data) {
                 if (data == 'ok') {
                     alert('反馈成功,Simple正在加紧处理!');
@@ -169,11 +310,63 @@ $(function () {
                 else {
                     alert('啊偶,发送失败，紧急反馈请加QQ:1430732833');
                 }
+                reportBug.val('');
                 $('#divReportBug').fadeOut(500);
+                $('#btnReportBugSubmit').val('发送');
             }
         });
     });
+
+    // 打开界面设置抬头
+    $('#tdSetTitle').click(function () {
+        $('#txtTitleName').val(saveHead);
+        $('#divSaveTitle').fadeIn();
+    });
+    $("#tdSaveTitleCancel").click(function () {
+        $('#divSaveTitle').fadeOut();
+    });
+
+    // 保存抬头
+    $('#tdSaveTitleOK').click(function () {
+        saveHead = $('#txtTitleName').val();
+        $('#divSaveTitle').fadeOut();
+    });
 })
+
+function SetOtherDivLocation() {
+    // 设置抬头
+    $('#divSaveTitle').offset({
+        left: window.innerWidth / 2 - $('#divSaveTitle').width() / 2,
+        top: window.innerHeight / 2 - $('#divSaveTitle').height() / 2
+    });
+
+    // 编译
+    $('#divBuildProcess').offset({
+        left: window.innerWidth / 2 - $('#divBuildProcess').width() / 2,
+        top: window.innerHeight / 2 - $('#divBuildProcess').height() / 2
+    });
+
+    // 报个bug
+    $('#divReportBug').offset({
+        left: window.innerWidth / 2 - $('#divReportBug').width() / 2,
+        top: window.innerHeight / 2 - $('#divReportBug').height() / 2
+    });
+}
+
+function funDownload(content, filename) {
+    // 创建隐藏的可下载链接
+    var eleLink = document.createElement('a');
+    eleLink.download = filename;
+    eleLink.style.display = 'none';
+    // 字符内容转变成blob地址
+    var blob = new Blob([content]);
+    eleLink.href = URL.createObjectURL(blob);
+    // 触发点击
+    document.body.appendChild(eleLink);
+    eleLink.click();
+    // 然后移除
+    document.body.removeChild(eleLink);
+};
 
 // 控件框单击事件
 function ControlsClick() {
@@ -187,6 +380,8 @@ function OperateClick() {
     ClearTitleBarClass();
     $('#divOperateTitleBar').removeClass('clsCommonTool');
     $('#divOperateTitleBar').addClass('clsToolsBarFocus');
+
+    $('#divMFContextMenu').fadeOut();
 }
 
 function PropertyClick() {
@@ -343,7 +538,7 @@ function CreateControls(name) {
                 var result = data.replace("@DIVID", divFrameName).
                 replace("@TBID", "tbControls_" + autoNo).replace("@TDCAPTION", "tdCaption_" + autoNo).
                 replace("@TDVALUE", "tdValue_" + autoNo).replace("@SAVESN", autoNo).replace('@TDBUTTON', 'tdButton_' + autoNo).
-                replace('@BTNQUERY', 'btnQuery_' + autoNo);
+                replace('@BTNQUERY', 'btnQuery_' + autoNo).replace('@TXTVALUE', 'txtFile_' + autoNo);
                 $('#divScreen').append(result);
 
                 // 将新增的控件保存到属性控件列表中
@@ -605,6 +800,8 @@ function SetControlPropertits(selectedID) {
     var saveSn = objControl.attr('saveSn');
     var pams = objControl.attr('pams');
     var controlHeight = objControl.attr('controlheight');
+    var display = objControl.attr('display');
+    var fileName = objControl.attr('filename');
 
     // 显示所有属性
     $('#tbProperty tr').show();
@@ -612,6 +809,7 @@ function SetControlPropertits(selectedID) {
 
         // 隐藏该隐藏的属性项目
         $('#trDisplay').hide();
+        $('#trIsSave').hide();
         $('#trProperty').hide();
         $('#trFixedContent').hide();
         $('#trFileName').hide();
@@ -641,6 +839,7 @@ function SetControlPropertits(selectedID) {
         $('#txtSaveSN').val(saveSn);
         $('#selProperty').val(pams);
         $('#txtControlHeight').val(controlHeight);
+        $('#selDisplay').val(display);
     } else if (controlType == 'time') {
         // 隐藏该隐藏的属性项目
         $('#trProperty').hide();
@@ -669,6 +868,7 @@ function SetControlPropertits(selectedID) {
         $('#txtSaveSN').val(saveSn);
         $('#selProperty').val(pams);
         $('#txtControlHeight').val(controlHeight);
+        $('#txtFileName').val(fileName);
     } else if (controlType == 'sn') {
         // 隐藏该隐藏的属性项目
         $('#trProperty').hide();
@@ -747,6 +947,10 @@ function SetControlPropertits(selectedID) {
         $('#txtControlHeight').val(controlHeight);
     }
     else if (controlType == 'singleTotalCount') {
+        // 隐藏该隐藏的属性项目
+        $('#trProperty').hide();
+        $('#trFileName').hide();
+        $('#trHotKey').hide();
 
         // 设置到可视区域
         $('#txtCaption').val(caption);
@@ -791,6 +995,85 @@ function PropertiesSetSuccessful() {
         var controlNO = selectedControl.split("_")[1];
 
         // 设置该控件的caption属性和该控件下方td的caption
+        // 由于控件"query(查询)"存在不同属性，所以我们需要在这里做一下特殊处理
+        var divControl = $('#' + selectedControl);
+        if (divControl.attr('type') == 'query') {
+            divControl.attr('caption', $(this).val());
+
+            // 设置设计器显示标题
+            var designTxt = $(this).val() + '[' + $('#selHotKey').val() + ']:';
+            // 判断当前文件名是否存在存在的话就是查询功能不存在的话就是类似于固定值功能
+            var thisFileName = divControl.attr('filename');
+            if (thisFileName.length > 0)
+                designTxt += thisFileName;
+            $('#tdCaption_' + controlNO).text(designTxt);
+        }
+        else {
+            divControl.attr('caption', $(this).val());
+            $('#tdCaption_' + controlNO).text($(this).val());
+        }
+    });
+
+    // 查询文件名
+    $('#txtFileName').blur(function () {
+        // 判断MF屏幕是否存在控件不存在直接返回
+        if ($('#divScreen').length <= 0)
+            return;
+
+        // 找到当前焦点控件
+        var selectedControl = $('#selAllControls').val();
+        var controlNO = selectedControl.split("_")[1];
+
+        // 由于控件"query(查询)"存在不同属性，所以我们需要在这里做一下特殊处理
+        var divControl = $('#' + selectedControl);
+        if (divControl.attr('type') == 'query') {
+            divControl.attr('filename', $(this).val());
+
+            // 设置设计器显示标题
+            var designTxt = $(divControl).attr('caption') + '[' + $(divControl).attr('hotkey') + ']:';
+            // 判断当前文件名是否存在存在的话就是查询功能不存在的话就是类似于固定值功能
+            var thisFileName = $(this).val();
+            designTxt += thisFileName;
+            $('#tdCaption_' + controlNO).text(designTxt);
+
+        }
+        else {
+            divControl.attr('filename', $(this).val());
+            $('#tdCaption_' + controlNO).text($(this).val());
+        }
+    });
+
+    // 是否保存
+    $('#selIsSave').change(function () {
+        //if ($('#divScreen').length <= 0)
+        //    return;
+
+        //// 找到当前焦点控件
+        //var selectedControl = $('#selAllControls').val();
+        //var controlNO = selectedControl.split("_")[1];
+
+        //if ($('#selIsSave').val() == 'save') {
+        //    $('#txtSaveCount').val(60);
+
+        //}
+        //else {
+        //    $('#txtSaveCount').val(0);
+        //    $('#' + selectedControl).attr('savecount', '0');
+        //    $('#' + selectedControl).attr('savesn', '0');
+        //}
+    })
+
+    // 固定值内容
+    $('#txtFixedContent').blur(function () {
+        // 判断MF屏幕是否存在控件不存在直接返回
+        if ($('#divScreen').length <= 0)
+            return;
+
+        // 找到当前焦点控件
+        var selectedControl = $('#selAllControls').val();
+        var controlNO = selectedControl.split("_")[1];
+
+        // 设置该控件的caption属性和该控件下方td的caption
         $('#' + selectedControl).attr('caption', $(this).val());
         $('#tdCaption_' + controlNO).text($(this).val());
     });
@@ -799,6 +1082,7 @@ function PropertiesSetSuccessful() {
     $('#txtSaveCount').blur(function () {
         if ($('#divScreen').length <= 0)
             return;
+
         // 找到当前焦点控件
         var selectedControl = $('#selAllControls').val();
         var controlNO = selectedControl.split("_")[1];
@@ -828,8 +1112,22 @@ function PropertiesSetSuccessful() {
         var selectedControl = $('#selAllControls').val();
         var controlNO = selectedControl.split("_")[1];
 
-        // 设置该控件的保存长度
-        $('#' + selectedControl).attr('hotkey', $(this).val());
+        // 由于控件"query(查询)"存在不同属性，所以我们需要在这里做一下特殊处理
+        var divControl = $('#' + selectedControl);
+        if (divControl.attr('type') == 'query') {
+            divControl.attr('hotkey', $(this).val());
+
+            // 设置设计器显示标题
+            var designTxt = $(divControl).attr('caption') + '[' + $(this).val() + ']:';
+            // 判断当前文件名是否存在存在的话就是查询功能不存在的话就是类似于固定值功能
+            var thisFileName = divControl.attr('filename');
+            if (thisFileName.length > 0)
+                designTxt += thisFileName;
+            $('#tdCaption_' + controlNO).text(designTxt);
+        }
+        else {
+            divControl.attr('hotkey', $(this).val());
+        }
     });
 
     // 保存顺序
@@ -868,10 +1166,12 @@ function PropertiesSetSuccessful() {
         var controlNO = selectedControl.split("_")[1];
 
         // 判断是否隐藏该控件
-        if ($(this).val() == 'visible') {
+        if ($(this).val() == 'true') {
+            $('#' + selectedControl).attr('display', 'true');
             $('#' + selectedControl).show();
         }
         else {
+            $('#' + selectedControl).attr('display', 'false');
             $('#' + selectedControl).hide();
         }
     });

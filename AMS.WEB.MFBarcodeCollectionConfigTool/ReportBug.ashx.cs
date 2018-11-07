@@ -23,10 +23,10 @@ namespace AMS.WEB.MFBarcodeCollectionConfigTool
             try
             {
                 MailMessage l_mailMsg = new MailMessage();
-                l_mailMsg.From = new MailAddress("1430732833@qq.com");
+                l_mailMsg.From = new MailAddress("1430732833@qq.com", l_strUserName);
                 l_mailMsg.To.Add(new MailAddress("single9966@163.com"));
                 l_mailMsg.Subject = "MF在线配置工具-" + l_strUserName + " 的反馈";
-                l_mailMsg.Body = "发送人:" + l_strUserName + "\r\n联系人邮箱:" + l_strEmail + "\r\n反馈内容:\r\n" + l_strRecommend;
+                l_mailMsg.Body = "发送人:" + l_strUserName + "<br/>联系人邮箱:" + l_strEmail + "<br/>反馈内容:<br/>" + l_strRecommend;
                 l_mailMsg.IsBodyHtml = true;
 
                 SmtpClient l_smtpClient = new SmtpClient();
