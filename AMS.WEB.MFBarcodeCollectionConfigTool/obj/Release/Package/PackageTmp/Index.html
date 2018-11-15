@@ -10,8 +10,7 @@
 <body onselectstart="return false;">
     <table id="tbMain">
         <tr>
-            <td colspan="3" hidden="hidden" id="tdCaption">version:1.0.2.0 description:在测试过程中,如有任何意见或建议请点左上角"报个bug"图标反馈.更好的使用体验请按F11
-                <!--本源码已开源，开源地址:https://github.com/p9966/AMS.WEB.MFBarcodeCollectionConfigTool-->
+            <td colspan="3" hidden="hidden" id="tdCaption">version:1.0.3.0 description:在测试过程中,如有任何意见或建议请点左上角"报个bug"图标反馈.更好的使用体验请按F11
             </td>
         </tr>
         <tr>
@@ -19,15 +18,27 @@
                 <table id="tbTools">
                     <tr>
                         <td id="tdBuild">
-                            <img src="img/build.png" title="编译" id="imgBuild" /></td>
+                            <img src="img/build.png" title="编译打包到文本文件" id="imgBuild" /></td>
+                        <td id="tdBuildToLocal" title="编译并将文件打包到连接此电脑的MF盘点机,前提条件:1.已经下载好右方的浏览器插件 2.MF盘点机已经通过打开U盘连接到此电脑">
+                            <img src="img/buildToLocal.png" />
+                        </td>
                         <td id="tbStopBuild">
-                            <img src="img/stop.png" />
+                            <img src="img/stop.png" title="停止当前编译操作" />
+                        </td>
+                        <td id="tdPlugin">
+                            <img src="img/plugin.png" title="下载Ams浏览器插件,方便用于后期直接将设计界面的控件直接打包编译到MF盘点机" />
+                        </td>
+                        <td>
+                            <img src="img/titleBarSplit.png" />
                         </td>
                         <td id="tdSetTitle">
-                            <img src="img/addTitle.png" title="设置抬头" />
+                            <img src="img/addTitle.png" title="设置配置文件抬头" />
                         </td>
                         <td id="tdReportBug">
-                            <img src="img/bug.png" title="报个bug" />
+                            <img src="img/bug.png" title="如果在使用过程中出现任何问题，获取对该Web应用有任何建议或意见请点我" />
+                        </td>
+                        <td id="tdVideo">
+                            <img src="img/video.png" title="不会使用?点我我教你!" />
                         </td>
                     </tr>
                 </table>
@@ -45,7 +56,7 @@
                         <td id="tdControlMenus">
                             <ol>
                                 <li val="point" des="设置为指针(默认)">指针</li>
-                                <li val="caption">标题</li>
+                                <!--<li val="caption">标题</li>-->
                                 <li val="barcode" des="在MF机器上面生成一个条码控件，该控件在一个界面上只能是唯一的">条码</li>
                                 <li val="num" des="在MF机器上面生成一个记录数量的控件，该控件在一个界面上只能是唯一的">当前数量</li>
                                 <li val="time" des="在MF机器上面生成一个时间控件，该控件可以在界面上多次出现">时间</li>
@@ -219,7 +230,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan="3" id="tdBottom">就绪 - AimasenStudio   version:1.0.2.1 description:在测试过程中,如有任何意见或建议请点左上角"报个bug"图标反馈.更好的使用体验请按F11</td>
+            <td colspan="3" id="tdBottom">就绪 - AimasenStudio   version:1.0.3.1 description:在测试过程中,如有任何意见或建议请点左上角"报个bug"图标反馈.更好的使用体验请按F11</td>
         </tr>
     </table>
     <!--MF屏幕右键菜单-->
@@ -376,5 +387,14 @@
             </tr>
         </table>
     </div>
+
+    <div id="divDemoAvi" hidden="hidden">
+        <video id="videoDemo" autoplay="autoplay" src="#">
+        </video>
+    </div>
+
+    <div id="divZhezhao" hidden="hidden">
+    </div>
+
 </body>
 </html>

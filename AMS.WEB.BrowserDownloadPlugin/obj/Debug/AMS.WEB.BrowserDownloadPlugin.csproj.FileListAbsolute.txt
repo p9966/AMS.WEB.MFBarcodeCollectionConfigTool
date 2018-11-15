@@ -1,0 +1,9 @@
+E:\dotNet\Demo\AMS.WEB.MFBarcodeCollectionConfigTool\AMS.WEB.BrowserDownloadPlugin\bin\Debug\AMS.WEB.BrowserDownloadPlugin.exe
+E:\dotNet\Demo\AMS.WEB.MFBarcodeCollectionConfigTool\AMS.WEB.BrowserDownloadPlugin\bin\Debug\AMS.WEB.BrowserDownloadPlugin.pdb
+E:\dotNet\Demo\AMS.WEB.MFBarcodeCollectionConfigTool\AMS.WEB.BrowserDownloadPlugin\obj\Debug\AMS.WEB.BrowserDownloadPlugin.FrmWriteRegedit.resources
+E:\dotNet\Demo\AMS.WEB.MFBarcodeCollectionConfigTool\AMS.WEB.BrowserDownloadPlugin\obj\Debug\AMS.WEB.BrowserDownloadPlugin.FrmWriteToMF.resources
+E:\dotNet\Demo\AMS.WEB.MFBarcodeCollectionConfigTool\AMS.WEB.BrowserDownloadPlugin\obj\Debug\AMS.WEB.BrowserDownloadPlugin.Properties.Resources.resources
+E:\dotNet\Demo\AMS.WEB.MFBarcodeCollectionConfigTool\AMS.WEB.BrowserDownloadPlugin\obj\Debug\AMS.WEB.BrowserDownloadPlugin.csproj.GenerateResource.Cache
+E:\dotNet\Demo\AMS.WEB.MFBarcodeCollectionConfigTool\AMS.WEB.BrowserDownloadPlugin\obj\Debug\AMS.WEB.BrowserDownloadPlugin.exe
+E:\dotNet\Demo\AMS.WEB.MFBarcodeCollectionConfigTool\AMS.WEB.BrowserDownloadPlugin\obj\Debug\AMS.WEB.BrowserDownloadPlugin.pdb
+E:\dotNet\Demo\AMS.WEB.MFBarcodeCollectionConfigTool\AMS.WEB.BrowserDownloadPlugin\obj\Debug\AMS.WEB.BrowserDownloadPlugin.csprojResolveAssemblyReference.cache

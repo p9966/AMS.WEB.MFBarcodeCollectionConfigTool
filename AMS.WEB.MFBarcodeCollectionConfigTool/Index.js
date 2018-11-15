@@ -94,7 +94,7 @@ $(function () {
     // 鼠标在MF屏幕上面移动事件
     $('#divScreen').mousemove(function (evt) {
         // 判断是否为准备创建控件 如果是重置鼠标指针
-        if (isCreateControl) {
+        if (isCreateControl && selectControl != 'point') {
             this.style.cursor = "crosshair";
         }
         else {
@@ -145,11 +145,11 @@ $(function () {
         $('#' + selectControl).remove();
 
         // 重置保存顺序
-        autoNo = 1;
+        var saveSN = 1;
         var allControls = $('#divScreen div');
         for (var i = 0; i < allControls.length; i++) {
-            $(allControls[i]).attr('savesn', autoNo);
-            autoNo++;
+            $(allControls[i]).attr('savesn', saveSN);
+            saveSN++;
         }
     });
 
@@ -171,6 +171,14 @@ $(function () {
                     alert(msg);
                     return;
                 }
+            }
+        }
+
+        // 判断query控件是否都存在热键
+        for (var i = 0; i < buildControls.length; i++) {
+            if ($(buildControls[i]).attr('type') == 'query' && $(buildControls[i]).attr('hotkey') == 'None') {
+                alert('请为控件' + $(buildControls[i]).attr('id') + "设置热键!");
+                return;
             }
         }
 
@@ -197,12 +205,12 @@ $(function () {
             } else if (controlType == 'num') {
                 if (buildResult.length > 0)
                     buildResult += '\r\n';
-                buildResult += 'num|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+                buildResult += 'num|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
             }
             else if (controlType == 'time') {
                 if (buildResult.length > 0)
                     buildResult += '\r\n';
-                buildResult += 'time|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+                buildResult += 'time|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
             }
             else if (controlType == 'query') {
                 if (buildResult.length > 0)
@@ -211,29 +219,29 @@ $(function () {
             } else if (controlType == 'sn') {
                 if (buildResult.length > 0)
                     buildResult += '\r\n';
-                buildResult += 'sn|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+                buildResult += 'sn|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
             } else if (controlType == 'fixedCount') {
                 if (buildResult.length > 0)
                     buildResult += '\r\n';
-                buildResult += 'fixedCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+                buildResult += 'fixedCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
             } else if (controlType == 'totalCount') {
                 if (buildResult.length > 0)
                     buildResult += '\r\n';
-                buildResult += 'totalCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+                buildResult += 'totalCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
             } else if (controlType == 'singleTotalCount') {
                 if (buildResult.length > 0)
                     buildResult += '\r\n';
-                buildResult += 'singleTotalCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+                buildResult += 'singleTotalCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
             }
             else if (controlType == 'conditionCount') {
                 if (buildResult.length > 0)
                     buildResult += '\r\n';
-                buildResult += 'conditionCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+                buildResult += 'conditionCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
             }
             else if (controlType == 'conditionSingleCount') {
                 if (buildResult.length > 0)
                     buildResult += '\r\n';
-                buildResult += 'conditionSingleCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('savesn')
+                buildResult += 'conditionSingleCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
             }
         }
 
@@ -248,6 +256,115 @@ $(function () {
                 $('#divBuildProcess').fadeOut();
             }
         }, 1);
+    });
+
+    $('#tdBuildToLocal').click(function () {
+        var buildControls = $('#divScreen div');
+        // 检查热键是否冲突
+        for (var i = 0; i < buildControls.length; i++) {
+            var hotKeyVal = $(buildControls[i]).attr('hotkey');
+            if (hotKeyVal == 'None')
+                continue;
+            for (var j = i + 1; j < buildControls.length; j++) {
+                var hotKeyVal2 = $(buildControls[j]).attr('hotkey');
+                if (hotKeyVal2 == 'None')
+                    continue;
+                if (hotKeyVal == hotKeyVal2) {
+                    var msg = "控件[" + $(buildControls[i]).attr('id') + ']与控件[' + $(buildControls[j]).attr('id') + ']的热键存在冲突!';
+                    alert(msg);
+                    return;
+                }
+            }
+        }
+
+        // 判断query控件是否都存在热键
+        for (var i = 0; i < buildControls.length; i++) {
+            if ($(buildControls[i]).attr('type') == 'query' && $(buildControls[i]).attr('hotkey') == 'None') {
+                alert('请为控件' + $(buildControls[i]).attr('id') + "设置热键!");
+                return;
+            }
+        }
+
+        // 检测保存顺序是否冲突
+        for (var i = 0; i < buildControls.length; i++) {
+            if ($(buildControls[i]).attr('savecount').length <= 0 || $(buildControls[i]).attr('savecount') == '0') {
+                continue;
+            }
+            for (var j = i + 1; j < buildControls.length; j++) {
+                if ($(buildControls[j]).attr('savecount').length <= 0 || $(buildControls[j]).attr('savecount') == '0') {
+                    continue;
+                }
+
+                if ($(buildControls[i]).attr('savesn') == $(buildControls[j]).attr('savesn')) {
+                    alert('控件[' + $(buildControls[i]).attr('id') + "]与控件[" + $(buildControls[j]).attr('id') + "]的保存顺序冲突!");
+                    return;
+                }
+            }
+        }
+
+        // 开始打包
+        var buildResult = "";
+        if (saveHead.length > 0) {
+            buildResult = "head|" + saveHead;
+        }
+
+        if (buildControls.length <= 0) {
+            alert('MF设计界面暂无控件,请先设计!');
+            return;
+        }
+
+        for (var i = 0; i < buildControls.length; i++) {
+            var controlCell = $(buildControls[i]);
+            var controlType = controlCell.attr('type');
+
+            if (controlType == 'barcode') {
+                if (buildResult.length > 0)
+                    buildResult += 'p9966';
+                buildResult += 'barcode|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|true|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
+            } else if (controlType == 'num') {
+                if (buildResult.length > 0)
+                    buildResult += 'p9966';
+                buildResult += 'num|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
+            }
+            else if (controlType == 'time') {
+                if (buildResult.length > 0)
+                    buildResult += 'p9966';
+                buildResult += 'time|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
+            }
+            else if (controlType == 'query') {
+                if (buildResult.length > 0)
+                    buildResult += 'p9966';
+                buildResult += 'query|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('filename') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
+            } else if (controlType == 'sn') {
+                if (buildResult.length > 0)
+                    buildResult += 'p9966';
+                buildResult += 'sn|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
+            } else if (controlType == 'fixedCount') {
+                if (buildResult.length > 0)
+                    buildResult += 'p9966';
+                buildResult += 'fixedCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
+            } else if (controlType == 'totalCount') {
+                if (buildResult.length > 0)
+                    buildResult += 'p9966';
+                buildResult += 'totalCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
+            } else if (controlType == 'singleTotalCount') {
+                if (buildResult.length > 0)
+                    buildResult += 'p9966';
+                buildResult += 'singleTotalCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
+            }
+            else if (controlType == 'conditionCount') {
+                if (buildResult.length > 0)
+                    buildResult += 'p9966';
+                buildResult += 'conditionCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
+            }
+            else if (controlType == 'conditionSingleCount') {
+                if (buildResult.length > 0)
+                    buildResult += 'p9966';
+                buildResult += 'conditionSingleCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
+            }
+        }
+
+        window.location.href = "Aimasen://" + buildResult;
     });
 
     // 停止编译
@@ -265,6 +382,29 @@ $(function () {
     $('#tdReportBugClose').click(function () {
         var objControl = $('#divReportBug');
         objControl.fadeOut(500);
+    });
+
+    // 播放演示视频
+    $('#tdVideo').click(function () {
+        $('#divZhezhao').show();
+        $('#videoDemo').attr('src', 'demo.mp4');
+        $('#divDemoAvi').fadeIn(2000);
+        $('#videoDemo').focus();
+    });
+
+    $('#divZhezhao').click(function () {
+        $('#divDemoAvi').hide();
+        $('#divZhezhao').hide();
+        $('#videoDemo').attr('src', '#');
+
+    });
+
+    $('#videoDemo').keydown(function (evt) {
+        if (evt.keyCode == '27') {
+            $('#divDemoAvi').hide();
+            $('#divZhezhao').hide();
+            $('#videoDemo').attr('src', '#');
+        }
     });
 
     // 发送bug
@@ -331,6 +471,11 @@ $(function () {
         saveHead = $('#txtTitleName').val();
         $('#divSaveTitle').fadeOut();
     });
+
+    // 下载插件
+    $('#tdPlugin').click(function () {
+        window.location.href = "AMS.WEB.BrowserDownloadPlugin.exe";
+    });
 })
 
 function SetOtherDivLocation() {
@@ -351,6 +496,12 @@ function SetOtherDivLocation() {
         left: window.innerWidth / 2 - $('#divReportBug').width() / 2,
         top: window.innerHeight / 2 - $('#divReportBug').height() / 2
     });
+
+    // 视频演示
+    $('#divDemoAvi').offset({
+        left: window.innerWidth / 2 - $('#divDemoAvi').width() / 2,
+        top: window.innerHeight / 2 - $('#divDemoAvi').height() / 2
+    });
 }
 
 function funDownload(content, filename) {
@@ -360,6 +511,7 @@ function funDownload(content, filename) {
     eleLink.style.display = 'none';
     // 字符内容转变成blob地址
     var blob = new Blob([content]);
+
     eleLink.href = URL.createObjectURL(blob);
     // 触发点击
     document.body.appendChild(eleLink);
@@ -803,6 +955,12 @@ function SetControlPropertits(selectedID) {
     var display = objControl.attr('display');
     var fileName = objControl.attr('filename');
 
+    if (saveCount != '0') {
+        $('#selIsSave').val('save');
+    }
+    else {
+        $('#selIsSave').val('Notsave');
+    }
     // 显示所有属性
     $('#tbProperty tr').show();
     if (controlType == 'barcode') {
@@ -1045,22 +1203,22 @@ function PropertiesSetSuccessful() {
 
     // 是否保存
     $('#selIsSave').change(function () {
-        //if ($('#divScreen').length <= 0)
-        //    return;
+        if ($('#divScreen').length <= 0)
+            return;
 
-        //// 找到当前焦点控件
-        //var selectedControl = $('#selAllControls').val();
-        //var controlNO = selectedControl.split("_")[1];
+        // 找到当前焦点控件
+        var selectedControl = $('#selAllControls').val();
+        var controlNO = selectedControl.split("_")[1];
 
-        //if ($('#selIsSave').val() == 'save') {
-        //    $('#txtSaveCount').val(60);
+        if ($('#selIsSave').val() == 'save') {
+            $('#txtSaveCount').val(60);
 
-        //}
-        //else {
-        //    $('#txtSaveCount').val(0);
-        //    $('#' + selectedControl).attr('savecount', '0');
-        //    $('#' + selectedControl).attr('savesn', '0');
-        //}
+        }
+        else {
+            $('#txtSaveCount').val(0);
+            $('#' + selectedControl).attr('savecount', '0');
+            $('#' + selectedControl).attr('savesn', '0');
+        }
     })
 
     // 固定值内容
@@ -1088,7 +1246,12 @@ function PropertiesSetSuccessful() {
         var controlNO = selectedControl.split("_")[1];
 
         // 设置该控件的保存长度
-        $('#' + selectedControl).attr('savecount', $(this).val());
+        if ($(this).val().length <= 0)
+            $('#' + selectedControl).attr('savecount', '0');
+        else
+            $('#' + selectedControl).attr('savecount', $(this).val());
+        if ($(this).val() == '0' || $(this).val().length <= 0)
+            $('#selIsSave').val('Notsave');
     });
 
     // 分隔符位数
@@ -1186,7 +1349,7 @@ function PropertiesSetSuccessful() {
         var controlNO = selectedControl.split("_")[1];
 
         // 设置控件高度
-        $('#tdValue_' + controlNO).css({ 'height': $(this).val() });
+        $('#' + selectedControl).css({ 'height': $(this).val() });
         $('#' + selectedControl).attr('controlheight', $(this).val());
     });
 }

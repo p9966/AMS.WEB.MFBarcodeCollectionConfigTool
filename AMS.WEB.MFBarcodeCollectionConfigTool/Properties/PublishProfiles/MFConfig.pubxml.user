@@ -9,8 +9,17 @@
     <_PublishTargetUrl>E:\MFConfigToolsWeb</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="AMS.WEB.BrowserDownloadPlugin.exe">
+      <publishTime>11/12/2018 14:48:14</publishTime>
+    </File>
     <File Include="bin/AMS.WEB.MFBarcodeCollectionConfigTool.dll">
-      <publishTime>11/07/2018 13:47:39</publishTime>
+      <publishTime>11/15/2018 10:42:40</publishTime>
+    </File>
+    <File Include="demo.avi">
+      <publishTime>11/13/2018 16:56:48</publishTime>
+    </File>
+    <File Include="demo.mp4">
+      <publishTime>11/15/2018 10:38:20</publishTime>
     </File>
     <File Include="DownLoad.ashx">
       <publishTime>11/05/2018 14:51:17</publishTime>
@@ -24,8 +33,14 @@
     <File Include="img/build.png">
       <publishTime>11/01/2018 14:12:10</publishTime>
     </File>
+    <File Include="img/buildToLocal.png">
+      <publishTime>11/09/2018 13:40:42</publishTime>
+    </File>
     <File Include="img/FullPower.bmp">
       <publishTime>10/30/2018 09:15:47</publishTime>
+    </File>
+    <File Include="img/plugin.png">
+      <publishTime>11/08/2018 17:26:25</publishTime>
     </File>
     <File Include="img/ReportBugClose.png">
       <publishTime>11/01/2018 22:27:34</publishTime>
@@ -33,17 +48,23 @@
     <File Include="img/stop.png">
       <publishTime>11/01/2018 23:45:36</publishTime>
     </File>
+    <File Include="img/titleBarSplit.png">
+      <publishTime>11/13/2018 14:51:38</publishTime>
+    </File>
+    <File Include="img/video.png">
+      <publishTime>11/13/2018 17:37:14</publishTime>
+    </File>
     <File Include="img/wifi_cnn.bmp">
       <publishTime>10/30/2018 09:24:08</publishTime>
     </File>
     <File Include="Index.css">
-      <publishTime>11/07/2018 13:29:32</publishTime>
+      <publishTime>11/15/2018 11:03:41</publishTime>
     </File>
     <File Include="Index.html">
-      <publishTime>11/07/2018 16:01:55</publishTime>
+      <publishTime>11/15/2018 11:49:10</publishTime>
     </File>
     <File Include="Index.js">
-      <publishTime>11/07/2018 16:01:09</publishTime>
+      <publishTime>11/15/2018 11:06:38</publishTime>
     </File>
     <File Include="jquery-1.8.2.js">
       <publishTime>10/29/2018 20:27:12</publishTime>
@@ -55,34 +76,34 @@
       <publishTime>11/01/2018 22:44:40</publishTime>
     </File>
     <File Include="ToolComponents/barcode.html">
-      <publishTime>11/07/2018 15:56:01</publishTime>
+      <publishTime>11/10/2018 10:08:17</publishTime>
     </File>
     <File Include="ToolComponents/ConditionCount.html">
-      <publishTime>11/07/2018 15:56:04</publishTime>
+      <publishTime>11/10/2018 10:08:23</publishTime>
     </File>
     <File Include="ToolComponents/ConditionSingleCount.html">
-      <publishTime>11/07/2018 15:54:10</publishTime>
+      <publishTime>11/10/2018 10:08:27</publishTime>
     </File>
     <File Include="ToolComponents/FixedCount.html">
-      <publishTime>11/07/2018 15:54:10</publishTime>
+      <publishTime>11/08/2018 17:46:24</publishTime>
     </File>
     <File Include="ToolComponents/Num.html">
-      <publishTime>11/07/2018 15:54:10</publishTime>
+      <publishTime>11/10/2018 10:08:35</publishTime>
     </File>
     <File Include="ToolComponents/Query.html">
-      <publishTime>11/07/2018 15:54:10</publishTime>
+      <publishTime>11/10/2018 10:03:28</publishTime>
     </File>
     <File Include="ToolComponents/SerialNum.html">
-      <publishTime>11/07/2018 15:54:10</publishTime>
+      <publishTime>11/10/2018 10:08:43</publishTime>
     </File>
     <File Include="ToolComponents/SingleTotalCount.html">
-      <publishTime>11/07/2018 15:54:10</publishTime>
+      <publishTime>11/10/2018 10:08:47</publishTime>
     </File>
     <File Include="ToolComponents/Time.html">
-      <publishTime>11/07/2018 15:54:10</publishTime>
+      <publishTime>11/10/2018 10:08:52</publishTime>
     </File>
     <File Include="ToolComponents/TotalCount.html">
-      <publishTime>11/07/2018 15:54:08</publishTime>
+      <publishTime>11/10/2018 10:08:57</publishTime>
     </File>
     <File Include="Web.config">
       <publishTime>10/30/2018 11:00:05</publishTime>

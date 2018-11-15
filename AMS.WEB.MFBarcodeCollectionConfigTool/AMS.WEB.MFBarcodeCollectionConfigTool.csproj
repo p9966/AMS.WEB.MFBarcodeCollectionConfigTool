@@ -57,12 +57,18 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AMS.WEB.BrowserDownloadPlugin.exe" />
+    <Content Include="demo.mp4" />
     <Content Include="img\addTitle.png" />
     <Content Include="img\bug.png" />
     <Content Include="img\build.png" />
+    <Content Include="img\buildToLocal.png" />
     <Content Include="img\FullPower.bmp" />
+    <Content Include="img\plugin.png" />
     <Content Include="img\ReportBugClose.png" />
     <Content Include="img\stop.png" />
+    <Content Include="img\titleBarSplit.png" />
+    <Content Include="img\video.png" />
     <Content Include="img\wifi_cnn.bmp" />
     <Content Include="Index.css" />
     <Content Include="Index.html" />
