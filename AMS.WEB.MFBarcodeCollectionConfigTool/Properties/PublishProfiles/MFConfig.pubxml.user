@@ -9,11 +9,14 @@
     <_PublishTargetUrl>E:\MFConfigToolsWeb</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="Aimasen.rar">
+      <publishTime>11/24/2018 11:08:00</publishTime>
+    </File>
     <File Include="AMS.WEB.BrowserDownloadPlugin.exe">
-      <publishTime>11/12/2018 14:48:14</publishTime>
+      <publishTime>11/20/2018 11:26:00</publishTime>
     </File>
     <File Include="bin/AMS.WEB.MFBarcodeCollectionConfigTool.dll">
-      <publishTime>11/15/2018 10:42:40</publishTime>
+      <publishTime>11/24/2018 11:09:39</publishTime>
     </File>
     <File Include="demo.avi">
       <publishTime>11/13/2018 16:56:48</publishTime>
@@ -35,6 +38,9 @@
     </File>
     <File Include="img/buildToLocal.png">
       <publishTime>11/09/2018 13:40:42</publishTime>
+    </File>
+    <File Include="img/downLoadMF.png">
+      <publishTime>11/24/2018 11:06:36</publishTime>
     </File>
     <File Include="img/FullPower.bmp">
       <publishTime>10/30/2018 09:15:47</publishTime>
@@ -58,13 +64,13 @@
       <publishTime>10/30/2018 09:24:08</publishTime>
     </File>
     <File Include="Index.css">
-      <publishTime>11/15/2018 11:03:41</publishTime>
+      <publishTime>11/21/2018 16:23:41</publishTime>
     </File>
     <File Include="Index.html">
-      <publishTime>11/15/2018 11:49:10</publishTime>
+      <publishTime>11/24/2018 11:07:34</publishTime>
     </File>
     <File Include="Index.js">
-      <publishTime>11/15/2018 11:06:38</publishTime>
+      <publishTime>11/24/2018 11:09:02</publishTime>
     </File>
     <File Include="jquery-1.8.2.js">
       <publishTime>10/29/2018 20:27:12</publishTime>
@@ -76,34 +82,34 @@
       <publishTime>11/01/2018 22:44:40</publishTime>
     </File>
     <File Include="ToolComponents/barcode.html">
-      <publishTime>11/10/2018 10:08:17</publishTime>
+      <publishTime>11/20/2018 12:15:14</publishTime>
     </File>
     <File Include="ToolComponents/ConditionCount.html">
-      <publishTime>11/10/2018 10:08:23</publishTime>
+      <publishTime>11/19/2018 17:22:56</publishTime>
     </File>
     <File Include="ToolComponents/ConditionSingleCount.html">
-      <publishTime>11/10/2018 10:08:27</publishTime>
+      <publishTime>11/19/2018 17:22:55</publishTime>
     </File>
     <File Include="ToolComponents/FixedCount.html">
-      <publishTime>11/08/2018 17:46:24</publishTime>
+      <publishTime>11/16/2018 14:10:06</publishTime>
     </File>
     <File Include="ToolComponents/Num.html">
-      <publishTime>11/10/2018 10:08:35</publishTime>
+      <publishTime>11/20/2018 12:08:30</publishTime>
     </File>
     <File Include="ToolComponents/Query.html">
-      <publishTime>11/10/2018 10:03:28</publishTime>
+      <publishTime>11/20/2018 12:13:42</publishTime>
     </File>
     <File Include="ToolComponents/SerialNum.html">
       <publishTime>11/10/2018 10:08:43</publishTime>
     </File>
     <File Include="ToolComponents/SingleTotalCount.html">
-      <publishTime>11/10/2018 10:08:47</publishTime>
+      <publishTime>11/19/2018 17:22:57</publishTime>
     </File>
     <File Include="ToolComponents/Time.html">
       <publishTime>11/10/2018 10:08:52</publishTime>
     </File>
     <File Include="ToolComponents/TotalCount.html">
-      <publishTime>11/10/2018 10:08:57</publishTime>
+      <publishTime>11/19/2018 17:23:17</publishTime>
     </File>
     <File Include="Web.config">
       <publishTime>10/30/2018 11:00:05</publishTime>

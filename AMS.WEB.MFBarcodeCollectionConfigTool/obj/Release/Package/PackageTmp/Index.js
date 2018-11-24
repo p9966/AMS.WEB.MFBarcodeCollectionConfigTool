@@ -182,6 +182,20 @@ $(function () {
             }
         }
 
+        // 判断用户是否添加了数量控件，如果没有添加数量控件 那么该功能就类似于无库判断  就不能存在总数量和条件总数量控件
+        if ($("#divScreen div[type='num']").length <= 0) {
+            // 用户没有添加数量控件，那么检测是否存在 条件总数量和总数量控件 如果存在提示用户删除
+            if ($("#divScreen div[type='totalCount']").length > 0) {
+                alert('当前您的配置为\"无数量模式\"哦,所以也不能存在\"总数量\"控件哦!');
+                return;
+            }
+
+            if ($("#divScreen div[type='conditionCount']").length > 0) {
+                alert('当前您的配置为\"无数量模式\"哦,所以也不能存在\"条件总数量\"控件哦!');
+                return;
+            }
+        }
+
         // 开始打包
         var buildResult = "";
         if (saveHead.length > 0) {
@@ -223,7 +237,7 @@ $(function () {
             } else if (controlType == 'fixedCount') {
                 if (buildResult.length > 0)
                     buildResult += '\r\n';
-                buildResult += 'fixedCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
+                buildResult += 'fixedCount|' + controlCell.attr('caption') + '^' + controlCell.attr('fixedValue') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
             } else if (controlType == 'totalCount') {
                 if (buildResult.length > 0)
                     buildResult += '\r\n';
@@ -302,6 +316,21 @@ $(function () {
             }
         }
 
+
+        // 判断用户是否添加了数量控件，如果没有添加数量控件 那么该功能就类似于无库判断  就不能存在总数量和条件总数量控件
+        if ($("#divScreen div[type='num']").length <= 0) {
+            // 用户没有添加数量控件，那么检测是否存在 条件总数量和总数量控件 如果存在提示用户删除
+            if ($("#divScreen div[type='totalCount']").length > 0) {
+                alert('当前您的配置为\"无数量模式\"哦,所以也不能存在\"总数量\"控件哦!');
+                return;
+            }
+
+            if ($("#divScreen div[type='conditionCount']").length > 0) {
+                alert('当前您的配置为\"无数量模式\"哦,所以也不能存在\"条件总数量\"控件哦!');
+                return;
+            }
+        }
+
         // 开始打包
         var buildResult = "";
         if (saveHead.length > 0) {
@@ -342,7 +371,7 @@ $(function () {
             } else if (controlType == 'fixedCount') {
                 if (buildResult.length > 0)
                     buildResult += 'p9966';
-                buildResult += 'fixedCount|' + controlCell.attr('caption') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
+                buildResult += 'fixedCount|' + controlCell.attr('caption') + '^' + controlCell.attr('fixedValue') + '|' + controlCell.attr('controlheight') + '|' + controlCell.attr('display') + '|' + controlCell.attr('savecount') + '|' + controlCell.attr('splitcount') + '|' + controlCell.attr('hotkey') + '|' + controlCell.attr('savesn')
             } else if (controlType == 'totalCount') {
                 if (buildResult.length > 0)
                     buildResult += 'p9966';
@@ -475,6 +504,11 @@ $(function () {
     // 下载插件
     $('#tdPlugin').click(function () {
         window.location.href = "AMS.WEB.BrowserDownloadPlugin.exe";
+    });
+
+    // 下载MF程序
+    $('#tdDownloadMF').click(function () {
+        window.location.href = "Aimasen.rar";
     });
 })
 
@@ -954,6 +988,7 @@ function SetControlPropertits(selectedID) {
     var controlHeight = objControl.attr('controlheight');
     var display = objControl.attr('display');
     var fileName = objControl.attr('filename');
+    var fixedValue = objControl.attr('fixedValue');
 
     if (saveCount != '0') {
         $('#selIsSave').val('save');
@@ -969,8 +1004,8 @@ function SetControlPropertits(selectedID) {
         $('#trDisplay').hide();
         $('#trIsSave').hide();
         $('#trProperty').hide();
-        $('#trFixedContent').hide();
         $('#trFileName').hide();
+        $('#trFixedValue').hide();
 
         // 设置到可视区域
         $('#txtCaption').val(caption);
@@ -983,11 +1018,11 @@ function SetControlPropertits(selectedID) {
     } else if (controlType == 'num') {
 
         // 隐藏该隐藏的属性项目
-        // $('#trDisplay').hide();
+        $('#trIsSave').hide();
         $('#trProperty').hide();
         $('#trFixedContent').hide();
         $('#trFileName').hide();
-        $('#trHotKey').hide();
+        $('#trFixedValue').hide();
 
         // 设置到可视区域
         $('#txtCaption').val(caption);
@@ -998,12 +1033,13 @@ function SetControlPropertits(selectedID) {
         $('#selProperty').val(pams);
         $('#txtControlHeight').val(controlHeight);
         $('#selDisplay').val(display);
+        $('#tdPropertiesValue').val(hotKey);
     } else if (controlType == 'time') {
         // 隐藏该隐藏的属性项目
         $('#trProperty').hide();
-        $('#trFixedContent').hide();
         $('#trFileName').hide();
         $('#trHotKey').hide();
+        $('#trFixedValue').hide();
 
         // 设置到可视区域
         $('#txtCaption').val(caption);
@@ -1016,7 +1052,7 @@ function SetControlPropertits(selectedID) {
     } else if (controlType == 'query') {
         // 隐藏该隐藏的属性项目
         $('#trProperty').hide();
-        $('#trFixedContent').hide();
+        $('#trFixedValue').hide();
 
         // 设置到可视区域
         $('#txtCaption').val(caption);
@@ -1030,7 +1066,7 @@ function SetControlPropertits(selectedID) {
     } else if (controlType == 'sn') {
         // 隐藏该隐藏的属性项目
         $('#trProperty').hide();
-        $('#trFixedContent').hide();
+        $('#trFixedValue').hide();
         $('#trFileName').hide();
         $('#trHotKey').hide();
 
@@ -1056,11 +1092,13 @@ function SetControlPropertits(selectedID) {
         $('#txtSaveSN').val(saveSn);
         $('#selProperty').val(pams);
         $('#txtControlHeight').val(controlHeight);
+        $('#txtFixedValue').val(fixedValue);
     } else if (controlType == 'totalCount') {
         // 隐藏该隐藏的属性项目
         $('#trProperty').hide();
-        $('#trFixedContent').hide();
+        $('#trFixedValue').hide();
         $('#trFileName').hide();
+        $('#trIsSave').hide();
         $('#trHotKey').hide();
 
         // 设置到可视区域
@@ -1075,7 +1113,8 @@ function SetControlPropertits(selectedID) {
     else if (controlType == 'conditionCount') {
         // 隐藏该隐藏的属性项目
         $('#trProperty').hide();
-        $('#trFixedContent').hide();
+        $('#trFixedValue').hide();
+        $('#trIsSave').hide();
         $('#trFileName').hide();
         $('#trHotKey').hide();
 
@@ -1091,7 +1130,8 @@ function SetControlPropertits(selectedID) {
     else if (controlType == 'conditionSingleCount') {
         // 隐藏该隐藏的属性项目
         $('#trProperty').hide();
-        $('#trFixedContent').hide();
+        $('#trFixedValue').hide();
+        $('#trIsSave').hide();
         $('#trFileName').hide();
         $('#trHotKey').hide();
 
@@ -1107,8 +1147,10 @@ function SetControlPropertits(selectedID) {
     else if (controlType == 'singleTotalCount') {
         // 隐藏该隐藏的属性项目
         $('#trProperty').hide();
+        $('#trIsSave').hide();
         $('#trFileName').hide();
         $('#trHotKey').hide();
+        $('#trFixedValue').hide();
 
         // 设置到可视区域
         $('#txtCaption').val(caption);
@@ -1153,7 +1195,7 @@ function PropertiesSetSuccessful() {
         var controlNO = selectedControl.split("_")[1];
 
         // 设置该控件的caption属性和该控件下方td的caption
-        // 由于控件"query(查询)"存在不同属性，所以我们需要在这里做一下特殊处理
+        // 由于控件"query(查询)"和固定值存在不同属性，所以我们需要在这里做一下特殊处理
         var divControl = $('#' + selectedControl);
         if (divControl.attr('type') == 'query') {
             divControl.attr('caption', $(this).val());
@@ -1164,6 +1206,21 @@ function PropertiesSetSuccessful() {
             var thisFileName = divControl.attr('filename');
             if (thisFileName.length > 0)
                 designTxt += thisFileName;
+            $('#tdCaption_' + controlNO).text(designTxt);
+        } else if (divControl.attr('type') == 'fixedCount') {
+            divControl.attr('caption', $(this).val());
+            $('#tdCaption_' + controlNO).text(divControl.attr('caption') + divControl.attr('fixedValue'));
+        } else if (divControl.attr('type') == 'num') {
+            divControl.attr('caption', $(this).val());
+
+            // 设置设计器显示标题
+            var designTxt = $(this).val() + '[' + $('#selHotKey').val() + ']:0';
+            $('#tdCaption_' + controlNO).text(designTxt);
+        } else if (divControl.attr('type') == 'barcode') {
+            divControl.attr('caption', $(this).val());
+
+            // 设置设计器显示标题
+            var designTxt = $(this).val() + '[' + $('#selHotKey').val() + ']:';
             $('#tdCaption_' + controlNO).text(designTxt);
         }
         else {
@@ -1199,6 +1256,21 @@ function PropertiesSetSuccessful() {
             divControl.attr('filename', $(this).val());
             $('#tdCaption_' + controlNO).text($(this).val());
         }
+    });
+
+    // 保存固定值
+    $('#txtFixedValue').blur(function () {
+        // 判断MF屏幕是否存在控件不存在直接返回
+        if ($('#divScreen').length <= 0)
+            return;
+
+        // 找到当前焦点控件
+        var selectedControl = $('#selAllControls').val();
+        var controlNO = selectedControl.split("_")[1];
+
+        // 设置该控件的caption属性和该控件下方td的caption
+        $('#' + selectedControl).attr('fixedValue', $(this).val());
+        $('#tdCaption_' + controlNO).text($('#' + selectedControl).attr('caption') + $(this).val());
     });
 
     // 是否保存
@@ -1286,6 +1358,18 @@ function PropertiesSetSuccessful() {
             var thisFileName = divControl.attr('filename');
             if (thisFileName.length > 0)
                 designTxt += thisFileName;
+            $('#tdCaption_' + controlNO).text(designTxt);
+        } else if (divControl.attr('type') == 'num') {
+            divControl.attr('hotkey', $(this).val());
+
+            // 设置设计器显示标题
+            var designTxt = $(divControl).attr('caption') + '[' + $(this).val() + ']:0';
+            $('#tdCaption_' + controlNO).text(designTxt);
+        } else if (divControl.attr('type') == 'barcode') {
+            divControl.attr('hotkey', $(this).val());
+
+            // 设置设计器显示标题
+            var designTxt = $(divControl).attr('caption') + '[' + $(this).val() + ']:';
             $('#tdCaption_' + controlNO).text(designTxt);
         }
         else {

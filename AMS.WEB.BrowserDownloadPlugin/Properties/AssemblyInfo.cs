@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("AMS.WEB.BrowserDownloadPlugin")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("该程序用于Web与MF盘点机之间的通讯")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Simple")]
 [assembly: AssemblyProduct("AMS.WEB.BrowserDownloadPlugin")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCopyright("Copyright Simple ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

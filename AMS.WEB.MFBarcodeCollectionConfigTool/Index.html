@@ -40,6 +40,12 @@
                         <td id="tdVideo">
                             <img src="img/video.png" title="不会使用?点我我教你!" />
                         </td>
+                        <td>
+                            <img src="img/titleBarSplit.png" />
+                        </td>
+                        <td id="tdDownloadMF">
+                            <img src="img/downLoadMF.png" title="下载MF程序 最新版本:1.0.0.1 版本描述:1.修复条码控件如果不存在标题那么就横向全屏显示条码控件;   2.修复更改查询后条件单品数量和条件总数量不刷新的bug   3.新增输入条件判断用户输入长度是否合法   4.修复查看软件版本号里面的输入框超过屏幕高度的bug" />
+                        </td>
                     </tr>
                 </table>
 
@@ -162,6 +168,11 @@
                                     <td>
                                         <input type="text" class="tdPropertiesValue" id="txtFileName" /></td>
                                 </tr>
+                                <tr id="trFixedValue">
+                                    <td class="tdPropertiesName">固定值</td>
+                                    <td>
+                                        <input type="text" class="tdPropertiesValue" id="txtFixedValue" /></td>
+                                </tr>
                                 <tr id="trIsSave">
                                     <td class="tdPropertiesName">是否保存</td>
                                     <td>
@@ -230,7 +241,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan="3" id="tdBottom">就绪 - AimasenStudio   version:1.0.3.1 description:在测试过程中,如有任何意见或建议请点左上角"报个bug"图标反馈.更好的使用体验请按F11</td>
+            <td colspan="3" id="tdBottom">就绪 - AimasenStudio   version:1.1.1.1 description:在测试过程中,如有任何意见或建议请点左上角"报个bug"图标反馈.更好的使用体验请按F11</td>
         </tr>
     </table>
     <!--MF屏幕右键菜单-->
@@ -389,7 +400,7 @@
     </div>
 
     <div id="divDemoAvi" hidden="hidden">
-        <video id="videoDemo" autoplay="autoplay" src="#">
+        <video id="videoDemo" controls="controls" autoplay="autoplay" src="#">
         </video>
     </div>
 

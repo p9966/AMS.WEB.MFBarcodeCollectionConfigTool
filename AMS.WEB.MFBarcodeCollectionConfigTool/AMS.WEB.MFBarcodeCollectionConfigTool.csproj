@@ -63,6 +63,7 @@
     <Content Include="img\bug.png" />
     <Content Include="img\build.png" />
     <Content Include="img\buildToLocal.png" />
+    <Content Include="img\downLoadMF.png" />
     <Content Include="img\FullPower.bmp" />
     <Content Include="img\plugin.png" />
     <Content Include="img\ReportBugClose.png" />
@@ -98,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DownLoad.ashx" />
+    <Content Include="Aimasen.rar" />
     <None Include="Properties\PublishProfiles\MFConfig.pubxml" />
     <Content Include="ReportBug.ashx" />
     <None Include="Web.Debug.config">

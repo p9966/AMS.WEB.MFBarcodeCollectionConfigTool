@@ -74,7 +74,9 @@ namespace AMS.WEB.BrowserDownloadPlugin
                 return;
             }
 
-            File.WriteAllBytes(m_strMFDriveName + "MF配置文件.txt", Encoding.Default.GetBytes(m_strConfig));
+            string l_strSaveFilePath = m_strMFDriveName + "MF配置文件.txt";
+            File.Delete(l_strSaveFilePath);
+            File.WriteAllBytes(l_strSaveFilePath, Encoding.Default.GetBytes(m_strConfig));
             Timer l_tmrLoad = new Timer();
             l_tmrLoad.Interval = 10;
             l_tmrLoad.Tick += ((snd, evt) =>
