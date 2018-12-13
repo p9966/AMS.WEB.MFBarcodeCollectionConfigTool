@@ -510,6 +510,13 @@ $(function () {
     $('#tdDownloadMF').click(function () {
         window.location.href = "Aimasen.rar";
     });
+
+    $('#divDemoAvi').resize(function () {
+        $('#divDemoAvi').offset({
+            left: window.innerWidth / 2 - $('#divDemoAvi').width() / 2,
+            top: window.innerHeight / 2 - $('#divDemoAvi').height() / 2
+        });
+    });
 })
 
 function SetOtherDivLocation() {

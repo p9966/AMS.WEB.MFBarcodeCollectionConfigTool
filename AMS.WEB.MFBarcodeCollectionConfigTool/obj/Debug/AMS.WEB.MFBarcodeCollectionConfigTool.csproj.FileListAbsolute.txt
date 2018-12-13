@@ -1,5 +1,4 @@
 E:\dotNet\Demo\AMS.WEB.MFBarcodeCollectionConfigTool\AMS.WEB.MFBarcodeCollectionConfigTool\bin\AMS.WEB.MFBarcodeCollectionConfigTool.dll
 E:\dotNet\Demo\AMS.WEB.MFBarcodeCollectionConfigTool\AMS.WEB.MFBarcodeCollectionConfigTool\bin\AMS.WEB.MFBarcodeCollectionConfigTool.pdb
-E:\dotNet\Demo\AMS.WEB.MFBarcodeCollectionConfigTool\AMS.WEB.MFBarcodeCollectionConfigTool\obj\Debug\AMS.WEB.MFBarcodeCollectionConfigTool.csprojResolveAssemblyReference.cache
 E:\dotNet\Demo\AMS.WEB.MFBarcodeCollectionConfigTool\AMS.WEB.MFBarcodeCollectionConfigTool\obj\Debug\AMS.WEB.MFBarcodeCollectionConfigTool.dll
 E:\dotNet\Demo\AMS.WEB.MFBarcodeCollectionConfigTool\AMS.WEB.MFBarcodeCollectionConfigTool\obj\Debug\AMS.WEB.MFBarcodeCollectionConfigTool.pdb
